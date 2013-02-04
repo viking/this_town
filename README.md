@@ -34,3 +34,9 @@ Or install it yourself as:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+> This town is a quiet town<br/>
+> Or a riot town like this town<br/>
+> This town is a love-you town<br/>
+> And a shove-you-down and push-you-'round town<br/>
+> -- Frank Sinatra
