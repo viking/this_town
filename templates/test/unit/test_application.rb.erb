@@ -1,0 +1,15 @@
+require 'helper'
+
+class TestApplication < Test::Unit::TestCase
+  include Rack::Test::Methods
+
+  def app
+    <%= constant_name %>::Application
+  end
+
+  test "index" do
+    get '/'
+    assert last_response.ok?
+    assert_equal "sup?", last_response.body
+  end
+end

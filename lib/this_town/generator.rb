@@ -64,6 +64,7 @@ module ThisTown
 
       # test
       template "test/helper.rb"
+      template "test/unit/test_application.rb"
 
       # public
       fetch "http://code.jquery.com/jquery-latest.min.js", "public/jquery.min.js"
