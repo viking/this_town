@@ -41,6 +41,9 @@ module ThisTown
     end
 
     def run
+      directory "db/migrate"
+      directory "templates"
+
       # root
       root_templates = %w{Gemfile LICENSE.txt README.md Rakefile}
       root_templates.each do |template_path|
@@ -53,6 +56,11 @@ module ThisTown
       # lib
       template "lib/newgem.rb", "lib/#{@gem_name}.rb"
       template "lib/newgem/version.rb", "lib/#{@gem_name}/version.rb"
+      template "lib/newgem/application.rb", "lib/#{@gem_name}/application.rb"
+      directory "lib/#{@gem_name}/views"
+
+      # config
+      template "config/database.yml"
 
       # test
       template "test/helper.rb"
