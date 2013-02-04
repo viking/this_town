@@ -78,7 +78,7 @@ module ThisTown
 
     def template(template_path, destination_path = template_path)
       out_path = prepare_destination(destination_path)
-      in_path = full_template_path(template_path)
+      in_path = full_template_path("#{template_path}.erb")
 
       template = Template.new(in_path, @template_options)
       output = template.result
@@ -115,7 +115,7 @@ module ThisTown
     end
 
     def directory(path)
-      FileUtils.mkdir_p(path)
+      FileUtils.mkdir_p(File.expand_path(path, @destination_root))
     end
   end
 end
