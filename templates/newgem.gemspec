@@ -1,15 +1,15 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'this_town/version'
+require '<%= gem_name %>/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "this_town"
-  gem.version       = ThisTown::VERSION
-  gem.authors       = ["Jeremy Stephens"]
-  gem.email         = ["jeremy.f.stephens@vanderbilt.edu"]
-  gem.description   = %q{Gem generator for sinatra applications}
-  gem.summary       = %q{Gem generator for sinatra applications}
+  gem.name          = <%= gem_name.inspect %>
+  gem.version       = <%= constant_name %>::VERSION
+  gem.authors       = [<%= author.inspect %>]
+  gem.email         = [<%= email.inspect %>]
+  gem.description   = %q{TODO: Write a gem description}
+  gem.summary       = %q{TODO: Write a gem summary}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
@@ -17,5 +17,6 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency 'rubigen'
+  gem.add_dependency 'sinatra'
+  gem.add_dependency 'sequel'
 end

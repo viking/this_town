@@ -1,5 +1,8 @@
-require "this_town/version"
+require 'erb'
+require 'fileutils'
 
 module ThisTown
-  # Your code goes here...
 end
+
+require 'this_town/version'
+require 'this_town/generator'
