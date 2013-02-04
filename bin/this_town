@@ -1,8 +1,12 @@
 # vim: set filetype=ruby:
 require 'this_town'
 
-if %w(-v --version).include? ARGV.first
+if ARGV.length != 1
+  $stderr.puts "Syntax: #{File.basename($0)} <path>"
+  $stderr.puts "        #{File.basename($0)} --version"
+elsif %w{-v --version}.include? ARGV.first
   puts "#{File.basename($0)} #{ThisTown::VERSION}"
   exit(0)
+else
+  ThisTown::Generator.new(ARGV.first).run
 end
-ThisTown::Generator.new(ARGV).run

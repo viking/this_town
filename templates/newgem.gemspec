@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'sinatra'
   gem.add_dependency 'sequel'
+  gem.add_dependency 'mustache'
 end
