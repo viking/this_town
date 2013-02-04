@@ -45,7 +45,7 @@ module ThisTown
       directory "templates"
 
       # root
-      root_templates = %w{Gemfile LICENSE.txt README.md Rakefile}
+      root_templates = %w{Gemfile LICENSE.txt README.md Rakefile config.ru}
       root_templates.each do |template_path|
         template(template_path)
       end
@@ -64,6 +64,14 @@ module ThisTown
 
       # test
       template "test/helper.rb"
+
+      # public
+      fetch "http://code.jquery.com/jquery-latest.min.js", "public/jquery.min.js"
+      file "public/jquery.mustache.min.js"
+
+      Dir.chdir(@destination_root) do
+        `git init && git add .`
+      end
     end
 
     private
@@ -82,6 +90,15 @@ module ThisTown
       in_path = full_template_path(template_path)
 
       FileUtils.cp(in_path, out_path)
+    end
+
+    def fetch(url, destination_path)
+      out_path = prepare_destination(destination_path)
+      open(url) do |u|
+        File.open(out_path, 'w') do |f|
+          f.write(u.read)
+        end
+      end
     end
 
     def full_template_path(template_path)

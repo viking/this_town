@@ -1,5 +1,6 @@
 require 'erb'
 require 'fileutils'
+require 'open-uri'
 
 module ThisTown
 end

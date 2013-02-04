@@ -9,7 +9,7 @@ group :development do
   gem 'mocha'
   gem 'guard'
   gem 'guard-test'
-  gem 'guard-rake'
+  gem 'guard-rack'
   gem 'guard-bundler'
   gem 'guard-shell'
 end

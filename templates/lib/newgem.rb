@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'mustache/sinatra'
 require 'sequel'
 require 'erb'
 require 'yaml'

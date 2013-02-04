@@ -1,4 +1,4 @@
-<% code do %>
+<%- code do -%>
   class Application < Sinatra::Base
     register Mustache::Sinatra
 
@@ -9,5 +9,9 @@
       :namespace => <%= constant_name %>
     }
     enable :reload_templates if development?
+
+    get "/" do
+      "sup?"
+    end
   end
-<% end %>
+<%- end -%>
