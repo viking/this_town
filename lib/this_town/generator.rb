@@ -57,7 +57,13 @@ module ThisTown
       template "lib/newgem.rb", "lib/#{@gem_name}.rb"
       template "lib/newgem/version.rb", "lib/#{@gem_name}/version.rb"
       template "lib/newgem/application.rb", "lib/#{@gem_name}/application.rb"
-      directory "lib/#{@gem_name}/views"
+      template "lib/newgem/views.rb", "lib/#{@gem_name}/views.rb"
+      template "lib/newgem/views/layout.rb", "lib/#{@gem_name}/views/layout.rb"
+      template "lib/newgem/views/index.rb", "lib/#{@gem_name}/views/index.rb"
+
+      # templates
+      template "templates/layout.mustache"
+      file "templates/index.mustache"
 
       # config
       template "config/database.yml"
@@ -67,6 +73,8 @@ module ThisTown
       template "test/unit/test_application.rb"
 
       # public
+      file "public/reset.css"
+      file "public/style.css"
       fetch "http://code.jquery.com/jquery-latest.min.js", "public/jquery.min.js"
       file "public/jquery.mustache.min.js"
 

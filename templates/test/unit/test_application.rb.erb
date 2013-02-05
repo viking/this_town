@@ -10,6 +10,6 @@ class TestApplication < Test::Unit::TestCase
   test "index" do
     get '/'
     assert last_response.ok?
-    assert_equal "sup?", last_response.body
+    assert_match "sup?", last_response.body
   end
 end

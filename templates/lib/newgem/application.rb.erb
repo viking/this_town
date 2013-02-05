@@ -11,7 +11,7 @@
     enable :reload_templates if development?
 
     get "/" do
-      "sup?"
+      mustache :index
     end
   end
 <%- end -%>
