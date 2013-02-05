@@ -18,8 +18,10 @@ namespace :db do
     env = args[:env] || "development"
     Rake::Task['environment'].invoke(env)
 
-    require 'sequel/extensions/migration'
-    Sequel::Migrator.apply(<%= constant_name %>::Database, "db/migrate")
+    unless Dir.glob("db/migrate/*.rb").empty?
+      require 'sequel/extensions/migration'
+      Sequel::Migrator.apply(<%= constant_name %>::Database, "db/migrate")
+    end
   end
 
   desc "Rollback the database"
@@ -27,9 +29,11 @@ namespace :db do
     env = args[:env] || "development"
     Rake::Task['environment'].invoke(env)
 
-    require 'sequel/extensions/migration'
-    version = (row = <%= constant_name %>::Database[:schema_info].first) ? row[:version] : nil
-    Sequel::Migrator.apply(<%= constant_name %>::Database, "db/migrate", version - 1)
+    unless Dir.glob("db/migrate/*.rb").empty?
+      require 'sequel/extensions/migration'
+      version = (row = <%= constant_name %>::Database[:schema_info].first) ? row[:version] : nil
+      Sequel::Migrator.apply(<%= constant_name %>::Database, "db/migrate", version - 1)
+    end
   end
 
   desc "Nuke the database (drop all tables)"

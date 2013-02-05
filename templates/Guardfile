@@ -27,7 +27,7 @@ end
 
 guard 'shell' do
   watch(%r{db/migrate/\d+_.+.rb}) do |m|
-    `rake db:migrate[test]`
-    `rake db:migrate[development]`
+    `bundle exec rake db:migrate[test]`
+    `bundle exec rake db:migrate[development]`
   end
 end
