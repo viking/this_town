@@ -2,6 +2,7 @@ require 'helper'
 
 class TestApplication < Test::Unit::TestCase
   include Rack::Test::Methods
+  include XhrHelper
 
   def app
     <%= constant_name %>::Application
