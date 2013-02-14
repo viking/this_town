@@ -3,10 +3,11 @@ module ThisTown
     TEMPLATES_PATH = File.expand_path(File.join(File.dirname(__FILE__),
       "..", "..", "templates"))
 
-    def initialize(destination_root)
+    def initialize(destination_root, options = {})
       @destination_root = destination_root
-      base_name = File.basename(@destination_root)
+      @force = options[:force]
 
+      base_name = File.basename(@destination_root)
       @gem_name = base_name
       constant_name = base_name.split('_').map { |p|
         p[0..0].upcase + p[1..-1]
@@ -116,7 +117,7 @@ module ThisTown
 
     def prepare_destination(destination_path)
       out_path = File.expand_path(destination_path, @destination_root)
-      if File.exists?(out_path)
+      if !@force && File.exists?(out_path)
         raise "file already exists: #{out_path}"
       end
       directory(File.dirname(out_path))
