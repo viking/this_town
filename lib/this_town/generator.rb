@@ -43,7 +43,7 @@ module ThisTown
 
     def run
       directory "db/migrate"
-      directory "templates"
+      directory "views"
 
       # root
       root_templates = %w{Gemfile LICENSE.txt README.md Rakefile config.ru}
@@ -58,13 +58,10 @@ module ThisTown
       template "lib/newgem.rb", "lib/#{@gem_name}.rb"
       template "lib/newgem/version.rb", "lib/#{@gem_name}/version.rb"
       template "lib/newgem/application.rb", "lib/#{@gem_name}/application.rb"
-      template "lib/newgem/views.rb", "lib/#{@gem_name}/views.rb"
-      template "lib/newgem/views/layout.rb", "lib/#{@gem_name}/views/layout.rb"
-      template "lib/newgem/views/index.rb", "lib/#{@gem_name}/views/index.rb"
 
-      # templates
-      template "templates/layout.mustache"
-      file "templates/index.mustache"
+      # views
+      template "views/layout.erb"
+      file "views/index.erb"
 
       # config
       template "config/database.yml"
@@ -77,7 +74,6 @@ module ThisTown
       file "public/reset.css"
       file "public/style.css"
       fetch "http://code.jquery.com/jquery-latest.min.js", "public/jquery.min.js"
-      file "public/jquery.mustache.min.js"
 
       Dir.chdir(@destination_root) do
         `git init && git add .`

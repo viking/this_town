@@ -4,7 +4,6 @@
 following libraries:
 
 * database: [sequel](http://sequel.rubyforge.org/)
-* templates: [mustache](https://github.com/defunkt/mustache)
 * testing: [test-unit](http://test-unit.rubyforge.org/) and [rack-test](https://github.com/brynary/rack-test)
 * mocking: [mocha](http://gofreerange.com/mocha/docs/)
 * automation: [guard](https://github.com/guard/guard)
